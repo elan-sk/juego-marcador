@@ -55,10 +55,13 @@ Puedes ajustar el tiempo en cualquier momento del juego:
 ![image](https://github.com/user-attachments/assets/b7feaccb-4a86-4658-8750-2bc02fc03d10)
 
 
-### 📱 Diseño responsive  
+### 📱 Modo acoplado
 Si necesitas usar otra aplicación o página web para mostrar las preguntas, puedes **reducir el alto de la ventana** para que el marcador quede visible en la parte inferior de la pantalla.
+Para esto solo debe dar click en el botón de modo acoplado en las configuraciones.
 
-![image](https://github.com/user-attachments/assets/4b950032-ec98-4a60-a1fc-2153267ef361)
+![image](https://github.com/user-attachments/assets/1a7edda3-94f3-4df6-9491-a2807f0c0c8f)
+
+![image](https://github.com/user-attachments/assets/4d84f888-6639-4c9b-81eb-7aea6f6b5e06)
 
 
 
