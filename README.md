@@ -32,27 +32,27 @@ También puedes **asignar nombres personalizados a los equipos**, o dejar los no
 Después de realizar una pregunta, puedes calificar la respuesta:
 - Si es **correcta**, haz clic en el botón correspondiente para otorgar los puntos al equipo en turno.
 - Si es **incorrecta**, simplemente se pasará al siguiente equipo sin sumar puntos.
-- 
-  ![image](https://github.com/user-attachments/assets/8d941509-5a49-4e9d-8786-6b90736a7f32)
+
+![image](https://github.com/user-attachments/assets/8d941509-5a49-4e9d-8786-6b90736a7f32)
 
 
 ### ➕ Sumar o restar puntos manualmente  
 Si tu dinámica de juego incluye **bonificaciones, castigos o robo de puntos**, puedes modificar el puntaje de cualquier equipo:
 - Haz clic en el botón con el símbolo **(+)** del equipo deseado.
 - Ingresa un valor positivo para sumar, o un valor negativo para restar.
-- 
-  ![image](https://github.com/user-attachments/assets/b81d4bfa-6c50-4a53-aa7f-9935bfa8252d)
 
-  ![image](https://github.com/user-attachments/assets/98182067-7754-47ad-ae2e-f94d91832ecf)
+![image](https://github.com/user-attachments/assets/b81d4bfa-6c50-4a53-aa7f-9935bfa8252d)
+
+![image](https://github.com/user-attachments/assets/98182067-7754-47ad-ae2e-f94d91832ecf)
 
 
 ### ⏱ Cambiar el tiempo por pregunta  
 Puedes ajustar el tiempo en cualquier momento del juego:
 - Solo debes hacer **doble clic sobre el cronómetro** para modificar el tiempo disponible por pregunta.
-- 
-  ![image](https://github.com/user-attachments/assets/3db32930-8c5f-4a68-abeb-e5a8dcc3d82e)
+  
+![image](https://github.com/user-attachments/assets/3db32930-8c5f-4a68-abeb-e5a8dcc3d82e)
 
-  ![image](https://github.com/user-attachments/assets/b7feaccb-4a86-4658-8750-2bc02fc03d10)
+![image](https://github.com/user-attachments/assets/b7feaccb-4a86-4658-8750-2bc02fc03d10)
 
 
 ### 📱 Diseño responsive  
