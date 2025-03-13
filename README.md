@@ -58,8 +58,6 @@ Puedes ajustar el tiempo en cualquier momento del juego:
 ### 📱 Diseño responsive  
 Si necesitas usar otra aplicación o página web para mostrar las preguntas, puedes **reducir el alto de la ventana** para que el marcador quede visible en la parte inferior de la pantalla.
 
-![image](https://github.com/user-attachments/assets/91bde147-d0e6-4fb9-8f18-3df9027c6d67)
-
 ![image](https://github.com/user-attachments/assets/4b950032-ec98-4a60-a1fc-2153267ef361)
 
 
