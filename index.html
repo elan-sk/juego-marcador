@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcadores</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="configuracion">
+    <div class="panel">
+      <h2>Configuración del Juego</h2>
+      <label>Número de equipos:
+        <select id="numEquipos">
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </label>
+      <label>Número de preguntas:
+        <input type="number" id="numPreguntas" min="1" value="6">
+      </label>
+      <label>Tiempo por pregunta:
+        <select id="tiempoPregunta">
+          <option value="15">15 seg</option>
+          <option value="30">30 seg</option>
+          <option value="45">45 seg</option>
+          <option value="60">1 min</option>
+          <option value="75">1:15 min</option>
+          <option value="90">1:30 min</option>
+          <option value="105">1:45 min</option>
+          <option value="120">2 min</option>
+          <option value="135">2:15 min</option>
+          <option value="150">2:30 min</option>
+          <option value="165">2:45 min</option>
+          <option value="180">3 min</option>
+          <option value="195">3:15 min</option>
+          <option value="210">3:30 min</option>
+          <option value="225">3:45 min</option>
+          <option value="240">4 min</option>
+          <option value="255">4:15 min</option>
+          <option value="270">4:30 min</option>
+          <option value="285">4:45 min</option>
+          <option value="300">5 min</option>
+        </select>
+      </label>
+      <label>Valor base por respuesta correcta:
+        <input type="number" id="valorPregunta" min="1" value="6">
+      </label>
+      <div id="nombresEquipos">
+        <label>Nombre del equipo 1:
+          <input type="text" id="equipo-0" placeholder="Equipo 1">
+        </label>
+        <label>Nombre del equipo 2:
+          <input type="text" id="equipo-1" placeholder="Equipo 2">
+        </label>
+      </div>
+      <button onclick="iniciarJuego()">Iniciar Juego</button>
+    </div>
+  </div>
+
+  <div id="juego" class="oculto">
+    <div class="panel panel-center">
+      <div id="marcadores">
+        <header>
+          <h2 class="titulo-ronda">Ronda <span id="rondaActual">1</span>/<span id="totalRondas"></span></h2>
+          <h3 class="titulo-pregunta">Pregunta: #<span id="NumeroPregunta"></span></h3>
+          <h4>Por: <span id="valorBase"></span>pt</h4>
+        </header>
+        <div id="marcador"></div>
+      </div>
+
+      <div id="tiempos">
+        <div id="cronometro">
+          <h3>Turno de: <span id="equipoActual"></span></h3>
+          <div  ondblclick="abrirModalTiempo()" class="cronometro">
+            <span id="tiempoRestante">00:00</span>
+          </div>
+          <div class="botones">
+            <button onclick="iniciarCronometro()">⏱️ Iniciar Cronómetro</button>
+          </div>
+          <div class="botones">
+            <button onclick="respuestaCorrecta()" class="btn-acepto">✅ Correcto</button>
+            <button onclick="respuestaIncorrecta()" class="btn-cancelar">❌ Incorrecto</button>
+          </div>
+          <br><br>
+          <div class="botones">
+            <button onclick="reiniciarJuego()" class="btn-neutro">🔁 Reiniciar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ganadorFinal" class="oculto">
+    <div class="panel panel-center">
+      <p></p>
+      <button onclick="reiniciarJuego()" class="btn-neutro">🔁 Reiniciar</button>
+    </div>
+  </div>
+
+  <div id="modalEditar" class="oculto modal" data-equipo="">
+    <div class="modal__container panel panel-center">
+      <h2><span id="modalNombreEquipo"></span></h2>
+      <p><strong>Puntaje:</strong> <span id="modalPuntaje"></span> <span>pts</span></p>
+      <label>Sumar al puntáje:
+        <input type="number" id="modalSumar" value="0">
+      </label>
+      <div class="botones">
+        <button onclick="sumarPuntaje()">Guardar</button>
+        <button onclick="cerrarModalEdicion()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalTiempo" class="oculto modal">
+    <div class="modal__container panel panel-center">
+      <h2>Cambiar tiempo de pregunta</h2>
+      <label>Tiempo por pregunta:
+        <select id="ModalTiempoPregunta">
+          <option value="15">15 seg</option>
+          <option value="30">30 seg</option>
+          <option value="45">45 seg</option>
+          <option value="60">1 min</option>
+          <option value="75">1:15 min</option>
+          <option value="90">1:30 min</option>
+          <option value="105">1:45 min</option>
+          <option value="120">2 min</option>
+          <option value="135">2:15 min</option>
+          <option value="150">2:30 min</option>
+          <option value="165">2:45 min</option>
+          <option value="180">3 min</option>
+          <option value="195">3:15 min</option>
+          <option value="210">3:30 min</option>
+          <option value="225">3:45 min</option>
+          <option value="240">4 min</option>
+          <option value="255">4:15 min</option>
+          <option value="270">4:30 min</option>
+          <option value="285">4:45 min</option>
+          <option value="300">5 min</option>
+        </select>
+      </label>
+      <div class="botones">
+        <button onclick="cambiarTiempo()">Guardar</button>
+        <button onclick="cerrarModalEdicion()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sonidos -->
+  <audio id="sound-tick" src="sounds/tick.mp3" loop></audio>
+  <audio id="sound-end" src="sounds/end.mp3"></audio>
+  <audio id="sound-correct" src="sounds/correct.mp3"></audio>
+  <audio id="sound-wrong" src="sounds/wrong.mp3"></audio>
+  <audio id="sound-suspense" src="sounds/suspense.mp3"></audio>
+  <audio id="sound-game-over" src="sounds/game-over.mp3"></audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

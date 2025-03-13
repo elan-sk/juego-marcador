@@ -1,0 +1,284 @@
+body {
+  background-color: #121212;
+  color: #f5f5f5;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.panel {
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  margin: auto;
+  max-width: 700px;
+  padding: 20px;
+}
+
+h2, h3 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input, select {
+  background: #2c2c2c;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin-top: 4px;
+  padding: 6px;
+}
+
+strong {
+  font-weight: 800;
+}
+
+button {
+  background: #00bbd4ff;
+  border: none;
+  border-radius: 8px;
+  color: #ffffffd3;
+  cursor: pointer;
+  font-weight: 800;
+  margin: 6px;
+  padding: 10px 16px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #008ba3;
+}
+
+
+.btn-acepto {
+  background-color: #28a746da;
+}
+.btn-acepto:hover {
+  background-color: #218837d3;
+}
+
+.btn-cancelar {
+  background-color:rgba(220, 53, 70, 0.836);
+}
+.btn-cancelar:hover {
+  background-color: #c82333d2;
+}
+
+.btn-neutro {
+  background: #f2effc;
+  color: #765bc7;
+}
+
+.btn-neutro:hover {
+  background: #e0d6ff;
+}
+
+
+#marcadores .titulo-ronda {
+  margin-bottom: 2px
+}
+
+#marcadores .titulo-pregunta {
+  margin-top: 0;
+}
+
+#marcador {
+  div {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  button {
+    margin: 0;
+    padding: 4px 5px;
+  }
+}
+
+
+.cronometro {
+  font-size: 3rem;
+  margin: 20px 0;
+  text-align: center;
+}
+
+#tiempoRestante, button {
+  user-select: none;
+}
+
+.equipo {
+  background: #292929;
+  border-left: 5px solid #555;
+  border-radius: 6px;
+  line-height: .3;
+  margin: 5px 0;
+  padding: 8px;
+}
+
+.equipo.turno {
+  background-color: #00bcd4;
+  color: black;
+  font-weight: bold;
+}
+
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.oculto {
+  display: none;
+}
+
+#ganadorFinal .panel {
+  animation: aparecer 1.5s ease-in-out;
+  background: #4caf50;
+  border-radius: 12px;
+  color: black;
+  font-size: 2rem;
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+}
+
+.animacion-ganador {
+  animation: flash 1s infinite alternate;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes flash {
+  0% { background: #4caf50; }
+  100% { background: #8bc34a; }
+}
+
+.animar-cambio-puntaje {
+  animation: pulse 0.4s ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); color: inherit}
+  50% { transform: scale(1.05);  color: #FFD54F}
+  100% { transform: scale(1);  color: inherit}
+}
+
+
+#marcador .equipo:nth-child(3) h2 {
+  border: 3px solid red;
+}
+
+
+@media (height <= 400px) {
+  body {
+    margin: 0;
+    padding: 0;
+
+  }
+
+  #juego {
+    max-width: 95%;
+    padding: 0;
+
+    .panel {
+      height: calc(100vh - 20px);
+      max-height: calc(100vh - 20px);
+      min-height: calc(100vh - 20px);
+    }
+  }
+
+  .panel{
+    align-items: start;
+    justify-content: center;
+    display: flex;
+    gap: 15px;
+    min-height: calc(100vh - 20px);
+    max-width: 95%;
+    padding: 10px;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .panel-center {
+    align-items: center;
+  }
+
+  .panel > * {
+    margin: 0;
+  }
+
+  #marcadores{
+    flex: 1 1 50%;
+  }
+
+  #marcadores header{
+    left: 10px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  #marcadores header > * {
+    margin: 0;
+  }
+
+  #marcador{
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    height: 100%;
+    justify-content: end;
+  }
+
+  #marcador > * {
+    flex: 0 1 27%;
+  }
+
+  #marcador .equipo  {
+    margin: 0;
+  }
+
+  #tiempos {
+    align-items: center;
+    display: flex;
+    flex: 1 0 min-content;
+  }
+
+  #tiempos #cronometro{
+    align-items: center;
+    display: flex;
+    justify-content: start;
+    padding-left: 30px;
+
+    h3 {
+      display: none;
+    }
+
+    .cronometro {
+      margin-right: 20px;
+    }
+  }
+
+  #tiempos .botones{
+    flex-wrap: nowrap;
+  }
+
+  #ganadorFinal .panel {
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 6px;
+    max-height: 100vh;
+    padding: 5px;
+  }
+
+
+}
