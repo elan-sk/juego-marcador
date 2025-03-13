@@ -62,3 +62,14 @@ Si necesitas usar otra aplicación o página web para mostrar las preguntas, pue
 
 
 
+---
+
+## 📄 Licencia
+
+Este proyecto está disponible bajo la **Licencia Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0)**.  
+Esto significa que puedes compartir y adaptar el contenido, **siempre que se dé el crédito adecuado** y **no se utilice con fines comerciales**.
+
+Más información: [Creative Commons CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+
+
+
