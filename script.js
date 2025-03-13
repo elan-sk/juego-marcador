@@ -9,7 +9,7 @@ let numeroPregunta = 1;
 let valorBase = 5;
 let puntos = 0;
 let timer;
-let tiempoRestante;
+let cronometroPausado = false;
 
 
 function iniciarJuego() {
@@ -45,14 +45,13 @@ function iniciarJuego() {
 }
 
 function abrirVentanaPequena() {
-  const anchoVentana = screen.availWidth;
+  const anchoVentana = screen.width;
   const altoVentana = 100;
-  const posicionTop = screen.availHeight - altoVentana;
 
   window.open(
-    window.location.href,
+    `${window.location.href}?emergente=1`,
     '_blank',
-    `left=0,top=${posicionTop},width=${anchoVentana},height=${altoVentana},resizable=yes,scrollbars=yes`
+    `width=${anchoVentana},height=${altoVentana},resizable=yes,scrollbars=yes`
   );
 }
 function actualizarMarcador() {
@@ -75,6 +74,7 @@ function iniciarCronometro() {
   limpiarTimer();
   tiempoRestante = tiempoPorPregunta;
   actualizarTiempo();
+  cronometroPausado = false;
 
   const audioTick = document.getElementById("sound-tick");
   audioTick.pause();
@@ -87,33 +87,57 @@ function iniciarCronometro() {
 
 
   timer = setInterval(() => {
-    tiempoRestante--;
+    if (!cronometroPausado) {
+      tiempoRestante--;
 
-    if (tiempoRestante === 10) {
-      const audio = document.getElementById("sound-suspense");
-      audio.pause();
-      audio.currentTime = 0;
-      audio.play();
+      if (tiempoRestante === 10) {
+        const audio = document.getElementById("sound-suspense");
+        audio.pause();
+        audio.currentTime = 0;
+        audio.play();
+      }
+
+      if (tiempoRestante === 1) {
+        audioTick.pause();
+        audioTick.currentTime = 0;
+
+        const audio = document.getElementById("sound-end");
+        audio.pause();
+        audio.currentTime = 0;
+        audio.play();
+      }
+
+      if (tiempoRestante <= 0) {
+        document.getElementById("sound-suspense").pause();
+        document.getElementById("sound-suspense").currentTime = 0;
+        limpiarTimer();
+      }
+
+      actualizarTiempo();
     }
+  }, 1000);
+}
 
-    if (tiempoRestante === 1) {
+function pausarReanudarCronometro() {
+  cronometroPausado = !cronometroPausado;
+
+  if (cronometroPausado) {
+    document.getElementById("sound-tick").pause();
+    document.getElementById("sound-suspense").pause();
+  } else {
+    if (tiempoRestante > 1) {
+      const audioTick = document.getElementById("sound-tick");
       audioTick.pause();
       audioTick.currentTime = 0;
-
-      const audio = document.getElementById("sound-end");
-      audio.pause();
-      audio.currentTime = 0;
-      audio.play();
+      audioTick.play();
     }
-
-    if (tiempoRestante <= 0) {
-      document.getElementById("sound-suspense").pause();
-      document.getElementById("sound-suspense").currentTime = 0;
-      limpiarTimer();
+    if (tiempoRestante <= 10) {
+      const audioSuspense = document.getElementById("sound-suspense");
+      audioSuspense.pause();
+      audioSuspense.currentTime = 0;
+      audioSuspense.play();
     }
-
-    actualizarTiempo();
-  }, 1000);
+  }
 }
 
 function actualizarTiempo() {
@@ -295,6 +319,18 @@ function finalizarJuego() {
 function reiniciarJuego() {
   location.reload();
 }
+
+function aplicarClaseSiEmergente() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const esEmergente = urlParams.get('emergente') === '1';
+
+  if (esEmergente) {
+    document.body.classList.add('modo-acoplado');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', aplicarClaseSiEmergente);
+window.addEventListener('resize', aplicarClaseSiEmergente);
 
 // Generar inputs de nombre de equipos según número seleccionado
 document.getElementById("numEquipos").addEventListener("change", () => {

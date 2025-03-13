@@ -145,6 +145,10 @@ button:hover {
   text-align: center;
 }
 
+.modo-acoplado #btnModoAcoplado {
+  display: none !important;
+}
+
 .animacion-ganador {
   animation: flash 1s infinite alternate;
 }
@@ -168,6 +172,7 @@ button:hover {
   50% { transform: scale(1.05);  color: #FFD54F}
   100% { transform: scale(1);  color: inherit}
 }
+
 
 
 @media (height <= 400px) {
