@@ -44,6 +44,17 @@ function iniciarJuego() {
   actualizarEstado();
 }
 
+function abrirVentanaPequena() {
+  const anchoVentana = screen.availWidth;
+  const altoVentana = 100;
+  const posicionTop = screen.availHeight - altoVentana;
+
+  window.open(
+    window.location.href,
+    '_blank',
+    `left=0,top=${posicionTop},width=${anchoVentana},height=${altoVentana},resizable=yes,scrollbars=yes`
+  );
+}
 function actualizarMarcador() {
   const marcador = document.getElementById("marcador");
   marcador.innerHTML = "";
@@ -223,6 +234,8 @@ function siguienteTurno() {
   document.getElementById("valorBase").textContent = calcularValorRonda();
   document.getElementById("tiempoRestante").textContent = "00:00";
 }
+
+
 
 function calcularValorRonda() {
   const tercio = Math.ceil(totalRondas / 3);
